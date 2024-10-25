@@ -1,5 +1,16 @@
 import * as sdk from "node-appwrite";
 
+const {
+  NEXT_PUBLIC_ENDPOINT: ENDPOINT,
+  NEXT_PUBLIC_PROJECT_ID: PROJECT_ID,
+  NEXT_PUBLIC_API_KEY: API_KEY,
+  DATABASE_ID,
+  PATIENT_COLLECTION_ID,
+  DOCTOR_COLLECTION_DB,
+  APPOINTMENT_COLLECTION_DB,
+  NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
+} = process.env;
+/*
 export const {
   NEXT_PUBLIC_ENDPOINT: ENDPOINT,
   PROJECT_ID,
@@ -10,7 +21,7 @@ export const {
   APPOINTMENT_COLLECTION_ID,
   NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
 } = process.env;
-
+*/
 const client = new sdk.Client();
 
 client.setEndpoint(ENDPOINT!).setProject(PROJECT_ID!).setKey(API_KEY!);

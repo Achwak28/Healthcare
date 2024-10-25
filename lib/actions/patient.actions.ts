@@ -1,13 +1,17 @@
-
 //import { ID, InputFile, Query } from "node-appwrite";
+"use server"
+
 import { ID, Query } from "node-appwrite";
 
-import {users
-} from "../appwrite.config";
+import { users } from "../appwrite.config";
 import { parseStringify } from "../utils";
 
 // CREATE APPWRITE USER
 export const createUser = async (user: CreateUserParams) => {
+  console.log('Endpoint:', process.env.NEXT_PUBLIC_ENDPOINT);
+  console.log('Project ID:', process.env.NEXT_PUBLIC_PROJECT_ID);
+  console.log('API Key:', process.env.NEXT_PUBLIC_API_KEY);
+  
   try {
     // Create new user -> https://appwrite.io/docs/references/1.5.x/server-nodejs/users#create
     const newuser = await users.create(
@@ -17,7 +21,7 @@ export const createUser = async (user: CreateUserParams) => {
       undefined,
       user.name
     );
-
+    console.log('User created:', newuser);
     return parseStringify(newuser);
   } catch (error: any) {
     // Check existing user
@@ -31,7 +35,7 @@ export const createUser = async (user: CreateUserParams) => {
     console.error("An error occurred while creating a new user:", error);
   }
 };
-/*
+
 // GET USER
 export const getUser = async (userId: string) => {
   try {
@@ -45,7 +49,7 @@ export const getUser = async (userId: string) => {
     );
   }
 };
-
+/*
 // REGISTER PATIENT
 export const registerPatient = async ({
   identificationDocument,
@@ -101,4 +105,5 @@ export const getPatient = async (userId: string) => {
       error
     );
   }
-};*/
+};
+*/

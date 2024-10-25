@@ -43,6 +43,8 @@ export enum FormFieldType {
 
    
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
+    console.log("enter submit fct")
+    console.log(isLoading)
     setIsLoading(true);
 
     try {
