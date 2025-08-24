@@ -46,9 +46,9 @@ const PatientForm = () => {
         phone: values.phone,
       };
 
-      console.log(user)
+    
       const newUser = await createUser(user);
-      console.log(newUser)
+  
       if (newUser) {
         router.push(`/patients/${newUser.$id}/register`);
       }

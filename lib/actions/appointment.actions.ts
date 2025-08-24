@@ -51,7 +51,7 @@ export const getAppointment = async (appointmentId: string) => {
   }
 }
 
-/*
+
 //  GET RECENT APPOINTMENTS
 export const getRecentAppointmentList = async () => {
   try {
@@ -60,27 +60,6 @@ export const getRecentAppointmentList = async () => {
       APPOINTMENT_COLLECTION_ID!,
       [Query.orderDesc("$createdAt")]
     );
-
-    // const scheduledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "scheduled");
-
-    // const pendingAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "pending");
-
-    // const cancelledAppointments = (
-    //   appointments.documents as Appointment[]
-    // ).filter((appointment) => appointment.status === "cancelled");
-
-    // const data = {
-    //   totalCount: appointments.total,
-    //   scheduledCount: scheduledAppointments.length,
-    //   pendingCount: pendingAppointments.length,
-    //   cancelledCount: cancelledAppointments.length,
-    //   documents: appointments.documents,
-    // };
-
     const initialCounts = {
       scheduledCount: 0,
       pendingCount: 0,
@@ -110,7 +89,6 @@ export const getRecentAppointmentList = async () => {
       ...counts,
       documents: appointments.documents,
     };
-
     return parseStringify(data);
   } catch (error) {
     console.error(
@@ -119,7 +97,7 @@ export const getRecentAppointmentList = async () => {
     );
   }
 };
-
+/*
 //  SEND SMS NOTIFICATION
 export const sendSMSNotification = async (userId: string, content: string) => {
   try {

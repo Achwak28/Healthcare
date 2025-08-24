@@ -1,24 +1,30 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/components/ui/button";
 import { Form, FormControl } from "@/components/ui/form";
-import CustomFormField from "../CustomFormField";
-import SubmitButton from "../SubmitButton";
-import { useState } from "react";
-import { PatientFormValidation, UserFormValidation } from "@/lib/validation";
-import { useRouter } from "next/navigation";
-import { createUser, registerPatient } from "@/lib/actions/patient.actions";
-import { FormFieldType } from "./PatientForm";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Doctors, GenderOptions, IdentificationTypes, PatientFormDefaultValues } from "@/constants";
-import { Label } from "../ui/label";
-import { SelectItem } from "../ui/select";
-import Image from "next/image";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { SelectItem } from "@/components/ui/select";
+import {
+  Doctors,
+  GenderOptions,
+  IdentificationTypes,
+  PatientFormDefaultValues,
+} from "@/constants";
+import { registerPatient } from "@/lib/actions/patient.actions";
+import { PatientFormValidation } from "@/lib/validation";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "react-phone-number-input/style.css";
+import CustomFormField, { FormFieldType } from "../CustomFormField";
 import { FileUploader } from "../FileUploader";
+import SubmitButton from "../SubmitButton";
 
 const RegisterForm = ({ user }: { user: User }) => {
   const router = useRouter();
@@ -37,7 +43,7 @@ const RegisterForm = ({ user }: { user: User }) => {
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);
 
-   
+    // Store file info in form data as
     let formData;
     if (
       values.identificationDocument &&
@@ -53,6 +59,7 @@ const RegisterForm = ({ user }: { user: User }) => {
     }
 
     try {
+      console.log("this is register"+values.name )
       const patient = {
         userId: user.$id,
         name: values.name,
@@ -119,9 +126,8 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
 
           {/* EMAIL & PHONE */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
-            
               fieldType={FormFieldType.INPUT}
               control={form.control}
               name="email"
@@ -141,14 +147,15 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* BirthDate & Gender */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.DATE_PICKER}
               control={form.control}
               name="birthDate"
               label="Date of birth"
             />
-                      <CustomFormField
+
+            <CustomFormField
               fieldType={FormFieldType.SKELETON}
               control={form.control}
               name="gender"
@@ -175,7 +182,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* Address & Occupation */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}
@@ -194,7 +201,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* Emergency Contact Name & Emergency Contact Number */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}
@@ -240,10 +247,10 @@ const RegisterForm = ({ user }: { user: User }) => {
                 </div>
               </SelectItem>
             ))}
-          </CustomFormField> 
+          </CustomFormField>
 
           {/* INSURANCE & POLICY NUMBER */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.INPUT}
               control={form.control}
@@ -262,7 +269,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* ALLERGY & CURRENT MEDICATIONS */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.TEXTAREA}
               control={form.control}
@@ -281,7 +288,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           </div>
 
           {/* FAMILY MEDICATION & PAST MEDICATIONS */}
-          <div className="flex flex-col gap-6 xl:flex-row [&>*]:basis-1/2 [&>*]:w-full">
+          <div className="flex flex-col gap-6 xl:flex-row">
             <CustomFormField
               fieldType={FormFieldType.TEXTAREA}
               control={form.control}
@@ -304,9 +311,8 @@ const RegisterForm = ({ user }: { user: User }) => {
           <div className="mb-9 space-y-1">
             <h2 className="sub-header">Identification and Verfication</h2>
           </div>
-          {/* Identification and Verfication */}
 
-   <CustomFormField
+          <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="identificationType"
@@ -320,7 +326,6 @@ const RegisterForm = ({ user }: { user: User }) => {
             ))}
           </CustomFormField>
 
-
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
@@ -328,8 +333,8 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Identification Number"
             placeholder="123456789"
           />
-    
- <CustomFormField
+
+          <CustomFormField
             fieldType={FormFieldType.SKELETON}
             control={form.control}
             name="identificationDocument"
@@ -340,8 +345,6 @@ const RegisterForm = ({ user }: { user: User }) => {
               </FormControl>
             )}
           />
-
-
         </section>
 
         <section className="space-y-6">
@@ -373,11 +376,10 @@ const RegisterForm = ({ user }: { user: User }) => {
           />
         </section>
 
-        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
+        <SubmitButton isLoading={isLoading}>Submit and Continue</SubmitButton>
       </form>
     </Form>
   );
 };
-
 
 export default RegisterForm;
