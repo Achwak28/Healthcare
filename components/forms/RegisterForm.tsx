@@ -85,7 +85,7 @@ const RegisterForm = ({ user }: { user: User }) => {
           : undefined,
         privacyConsent: values.privacyConsent,
       };
-
+  console.log("this is register"+values.name )
       const newPatient = await registerPatient(patient);
 
       if (newPatient) {

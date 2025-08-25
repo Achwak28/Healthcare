@@ -9,7 +9,10 @@ import { z } from "zod";
 
 import { SelectItem } from "@/components/ui/select";
 import { Doctors } from "@/constants";
-import { createAppointment } from "@/lib/actions/appointment.actions";
+import {
+  createAppointment,
+  updateAppointment,
+} from "@/lib/actions/appointment.actions";
 import { getAppointmentSchema } from "@/lib/validation";
 import { Appointment } from "@/types/appwrite.types";
 
@@ -99,15 +102,13 @@ export const AppointmentForm = ({
           },
           type,
         };
-        {
-          /*   const updatedAppointment = await updateAppointment(appointmentToUpdate);
+
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
+        
 
         if (updatedAppointment) {
           setOpen && setOpen(false);
           form.reset();
-        }
-    
-    */
         }
       }
     } catch (error) {
@@ -175,9 +176,7 @@ export const AppointmentForm = ({
             />
 
             <div
-              className={`flex flex-col gap-6  ${
-                type === "create" && "xl:flex-row"
-              }`}
+              className={`flex flex-col gap-6  ${type === "create" && "xl:flex-row"}`}
             >
               <CustomFormField
                 fieldType={FormFieldType.TEXTAREA}
@@ -212,9 +211,7 @@ export const AppointmentForm = ({
 
         <SubmitButton
           isLoading={isLoading}
-          className={`${
-            type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"
-          } w-full`}
+          className={`${type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"} w-full`}
         >
           {buttonLabel}
         </SubmitButton>
