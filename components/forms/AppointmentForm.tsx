@@ -72,14 +72,15 @@ export const AppointmentForm = ({
 
     try {
       if (type === "create" && patientId) {
+
         const appointment = {
           userId,
           patient: patientId,
           primaryPhysician: values.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
-          status: status as Status,
           note: values.note,
+          status: status as Status, 
         };
 
         const newAppointment = await createAppointment(appointment);

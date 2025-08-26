@@ -35,7 +35,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontJakarta.variable)}
+          className={cn(
+    "min-h-screen bg-dark-300 antialiased",
+    fontJakarta.className, // applies Plus Jakarta Sans
+    geistSans.variable,    // makes Geist Sans available as a CSS var
+    geistMono.variable     // makes Geist Mono available as a CSS var
+  )}
       >
            <ThemeProvider
             attribute="class"

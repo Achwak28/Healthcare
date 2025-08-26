@@ -5,6 +5,7 @@ import { getPatient } from "@/lib/actions/patient.actions";
 
 const Appointment = async ({ params: { userId } }: SearchParamProps) => {
   const patient = await getPatient(userId);
+  console.log("this is paient from new appointment"+ patient)
 
   return (
     <div className="flex h-screen max-h-screen">
@@ -24,7 +25,7 @@ const Appointment = async ({ params: { userId } }: SearchParamProps) => {
             type="create"
           />
 
-          <p className="copyright mt-10 py-12">© 2024 CarePluse</p>
+          <p className="copyright mt-10 py-12">© 2025 CarePluse</p>
         </div>
       </section>
 

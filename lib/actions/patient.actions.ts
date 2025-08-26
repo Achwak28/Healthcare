@@ -1,5 +1,5 @@
 "use server"
-import { BUCKET_ID, DATABASE_ID, databases, ENDPOINT, PROJECT_ID, storage, users } from "../appwrite.config";
+import { BUCKET_ID, DATABASE_ID, databases, ENDPOINT, PATIENT_COLLECTION_ID, PROJECT_ID, storage, users } from "../appwrite.config";
 import { parseStringify } from "../utils";
 import { ID, Query } from "node-appwrite";
 import { InputFile } from "node-appwrite/file";
@@ -84,19 +84,38 @@ export const registerPatient = async ({
   }
 };
 
-
+/*
 // GET PATIENT
 export const getPatient = async (userId: string) => {
   try {
     const user = await users.get(userId);
-
+console.log(parseStringify(user))
     return parseStringify(user);
+
   } catch (error) {
     console.error(
       "An error occurred while retrieving the user details:",
       error
     );
   }
-}; 
+}; */
 
 
+// GET PATIENT
+export const getPatient = async (userId: string) => {
+  try {
+    const patients = await databases.listDocuments(
+      DATABASE_ID!,
+      PATIENT_COLLECTION_ID!,
+      [Query.equal('userId', userId)]
+    );
+console.log(parseStringify(patients.documents[0]))
+    return parseStringify(patients.documents[0]);
+
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the user details:",
+      error
+    );
+  }
+};

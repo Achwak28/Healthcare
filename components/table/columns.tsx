@@ -24,7 +24,7 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       const appointment = row.original;
     
-      return <p className="text-14-medium ">"malade malade"</p>;
+      return <p className="text-14-medium ">{appointment.patient.name}</p>;
     },
   },
   {
