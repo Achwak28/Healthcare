@@ -32,14 +32,14 @@ export const FileUploader = ({ files, onChange }: FileUploaderProps) => {
       ) : (
         <>
           <Image
-            src="/assets/icons/upload.svg"
+            src="/assets/icons/telecharger.png"
             width={40}
             height={40}
             alt="upload"
           />
           <div className="file-upload_label">
             <p className="text-14-regular ">
-              <span className="text-green-500">Click to upload </span>
+              <span style={{ color: "#006BFF" }}>Click to upload </span>
               or drag and drop
             </p>
             <p className="text-12-regular">

@@ -235,9 +235,10 @@
   }
 
   /* =====  SHADCN OVERRIDES */
-  .shad-primary-btn {
-    @apply bg-green-500 text-white !important;
-  }
+ .shad-primary-btn {
+  @apply text-white !important;
+  background-color: #006BFF !important;
+}
 
   .shad-danger-btn {
     @apply bg-red-700 text-white !important;
@@ -369,15 +370,15 @@
   width: 100%;
   outline: none;
 }
-
+/* 24AE7C*/
 .react-datepicker__day--selected {
-  background-color: #24ae7c !important;
+  background-color: #006BFF !important;
   color: #ffffff !important;
   border-radius: 4px;
 }
 
 .react-datepicker__time-list-item--selected {
-  background-color: #24ae7c !important;
+  background-color: #006BFF !important;
 }
 
 .react-datepicker__time-container {
