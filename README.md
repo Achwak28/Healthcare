@@ -1,42 +1,105 @@
-# 🏥 Healthcare System for Hospitals & Clinics  
+# 🏥 Healthcare Management System  
 
-A **Next.js-based healthcare management system** dedicated to hospitals and clinics.  
-It allows patients to register, fill out a detailed personal form, and book appointments with their favorite doctors.  
-Admins can manage all appointments securely through a dashboard with OTP/passkey login, track statistics, and send automatic SMS updates to patients.  
+A **modern healthcare system** built for **hospitals and clinics**, designed to simplify how patients book appointments and how admins manage them.  
+The system is made with **Next.js, TailwindCSS, shadcn/ui, and Appwrite** to provide a smooth and secure experience.  
+
+---
+
+## 🌟 Overview  
+
+- Patients can **register** with detailed personal information.  
+- Patients can **book appointments** with their favorite doctors.  
+- Appointments can have three statuses:  
+  - 🕒 **Pending** – default after booking  
+  - ✅ **Scheduled** – confirmed by the admin  
+  - ❌ **Cancelled** – declined or cancelled  
+- Patients receive **SMS notifications** whenever their appointment status changes.  
+- Admins can securely log in (with OTP / passkey) to a dashboard that shows all appointments and useful statistics.  
 
 ---
 
 ## ✨ Features  
 
-### 👩‍⚕️ Patient Portal  
-- Patient registration with a long personal form.  
-- Appointment booking with preferred doctor selection.  
-- SMS notification for appointment updates.  
+### 👩‍⚕️ For Patients  
+- Easy registration with complete personal profile.  
+- Book appointments directly with chosen doctors.  
+- Get notified instantly by SMS when an appointment is scheduled or cancelled.  
 
-### 🛠️ Admin Dashboard  
-- Secure login (Passkey + OTP).  
-- View all appointments in real time.  
-- Appointment lifecycle:  
-  - **Pending** (default)  
-  - **Scheduled** ✅  
-  - **Cancelled** ❌  
-- Automatic SMS sent to patients after updates.  
-- Statistics overview (Pending, Scheduled, Cancelled).  
+### 🛠️ For Admins  
+- Secure OTP/passkey authentication.  
+- Dashboard to view all appointments.  
+- Ability to update statuses (Pending → Scheduled / Cancelled).  
+- Automatic SMS updates to patients after every change.  
+- Overview of statistics:  
+  - Total appointments  
+  - Pending count  
+  - Scheduled count  
+  - Cancelled count  
+
+---
+
+## 📊 Statistics Example  
+
+| Status     | Count |
+|------------|-------|
+| Total      | 152   |
+| Pending    | 87    |
+| Scheduled  | 49    |
+| Cancelled  | 16    |
+
+*(These numbers are dynamically updated in the dashboard.)*  
 
 ---
 
 ## 🖥️ Tech Stack  
-- [Next.js](https://nextjs.org) – React framework  
-- [TailwindCSS](https://tailwindcss.com) + [shadcn/ui](https://ui.shadcn.com) – UI & styling  
-- [Appwrite](https://appwrite.io) – backend services (auth, DB, storage)  
-- [Twilio](https://www.twilio.com) (or other SMS gateway) – SMS notifications  
+
+- ⚡ **Next.js** – frontend framework  
+- 🎨 **TailwindCSS + shadcn/ui** – styling and components  
+- 🗄️ **Appwrite** – backend (database, authentication)  
+- 📲 **Twilio / SMS Gateway** – patient notifications  
 
 ---
 
-## ⚙️ Getting Started  
+## 📸 Screenshots  
 
-Clone the repository:  
+### 📝 Patient Registration  
+![Patient Registration](./public/screenshots/patient-form.png)  
 
-```bash
-git clone https://github.com/your-username/healthcare-system.git
-cd healthcare-system
+### 📅 Appointment Booking  
+![Appointment Booking](./public/screenshots/appointment-booking.png)  
+
+### 📊 Admin Dashboard  
+![Admin Dashboard](./public/screenshots/admin-dashboard.png)  
+
+### 📈 Statistics  
+![Statistics](./public/screenshots/statistics.png)  
+
+---
+
+## 🚀 Future Improvements  
+
+- [ ] Doctor management system (specializations, availability).  
+- [ ] Integrated payments for appointments.  
+- [ ] Multi-language support for clinics in different regions.  
+- [ ] Patient medical history tracking.  
+
+---
+
+## 🤝 Contributing  
+
+Contributions are always welcome!  
+- Fork the repo  
+- Create your feature branch  
+- Commit your changes  
+- Submit a pull request 🎉  
+
+---
+
+## 📄 License  
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute it.  
+
+---
+
+💡 **Built for healthcare institutions to modernize patient–doctor interactions.**  
